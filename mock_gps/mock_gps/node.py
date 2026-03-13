@@ -15,7 +15,7 @@ class MockGPS(Node):
         self.get_logger().info('Mock GPS node initialized')
 
     def publish_data(self):
-        location = Point(x=47.6062, y=-122.3321, z=0.0)
+        location = Point(x=-10.4, y=63.44, z=0.0)  # longitude, latitude, altitude
         heading = Float32(data=45.0)
         self.location_pub.publish(location)
         self.heading_pub.publish(heading)

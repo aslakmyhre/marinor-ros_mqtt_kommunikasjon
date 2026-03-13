@@ -10,7 +10,7 @@ setup(
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
-    install_requires=['setuptools'],
+    install_requires=['setuptools','paho-mqtt', 'python-dotenv'],
     zip_safe=True,
     author='User',
     author_email='user@example.com',
