@@ -11,14 +11,8 @@ setup(
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
 
-        # >>> VIKTIG: installer standard miljø-hooker slik at overlay utvider AMENT_PREFIX_PATH og PYTHONPATH
-        ('share/' + package_name + '/hook', [
-            get_environment_hook_template_path('ament_prefix_path'),
-            get_environment_hook_template_path('pythonpath'),
-        ]),
         # Hvis du har launch-filer, legg dem til slik:
         # ('share/' + package_name + '/launch', ['launch/bridge.launch.py']),
-        ('share/' + package_name, ['env_hook/ament_prefix_path.dsv']),
     ],
     install_requires=['setuptools', 'paho-mqtt', 'python-dotenv'],
     zip_safe=True,

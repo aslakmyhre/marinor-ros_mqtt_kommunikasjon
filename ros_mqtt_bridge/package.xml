@@ -7,14 +7,11 @@
   <maintainer email="user@example.com">User</maintainer>
   <license>Apache-2.0</license>
 
-  <depend>rclpy</depend>
-  <depend>std_msgs</depend>
-  <depend>geometry_msgs</depend>
-  <!-- MQTT and dotenv are Python packages installed via setup.py (install_requires) -->
-
+  <!-- Runtime dependencies -->
   <exec_depend>rclpy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
+  <!-- MQTT and dotenv are Python packages installed via setup.py (install_requires) -->
 
   <export>
     <build_type>ament_python</build_type>
