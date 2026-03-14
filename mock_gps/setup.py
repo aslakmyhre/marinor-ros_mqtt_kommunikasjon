@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+from ament_package.templates import get_environment_hook_template_path
 
 package_name = 'mock_gps'
 
@@ -9,8 +10,17 @@ setup(
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+
+        # >>> VIKTIG: installer standard miljø-hooker slik at overlay utvider AMENT_PREFIX_PATH og PYTHONPATH
+        ('share/' + package_name + '/hook', [
+            get_environment_hook_template_path('ament_prefix_path'),
+            get_environment_hook_template_path('pythonpath'),
+        ]),
+        # Hvis du har launch-filer, legg dem til slik:
+        # ('share/' + package_name + '/launch', ['launch/bridge.launch.py']),
+        ('share/' + package_name, ['env_hook/ament_prefix_path.dsv']),
     ],
-    install_requires=['setuptools'],
+    install_requires=['setuptools', 'paho-mqtt', 'python-dotenv'],
     zip_safe=True,
     author='User',
     author_email='user@example.com',
@@ -20,6 +30,7 @@ setup(
     license='Apache-2.0',
     entry_points={
         'console_scripts': [
+            # 'ros_mqtt_bridge' blir navnet du bruker etter `ros2 run ros_mqtt_bridge ros_mqtt_bridge`
             'mock_gps = mock_gps.node:main',
         ],
     },
